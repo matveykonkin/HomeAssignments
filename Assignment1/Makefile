@@ -1,3 +1,6 @@
+/* Konkin Matvey st135668@student.spbu.ru
+ first test project
+*/
 CXX = g++
 SRCS = main.cpp hello.cpp
 OBJS = $(SRCS:.cpp=.o)
