@@ -1,3 +1,6 @@
+/* Konkin Matvey st135668@student.spbu.ru
+ first test project
+*/
 #include <iostream>
 #include <string>
 #include "hello.h"
