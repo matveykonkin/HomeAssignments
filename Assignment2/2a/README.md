@@ -8,4 +8,4 @@ Open .bin, find size, reverse,writing to newfile
 ## Build
 make
 ## Run
-./assignment2a
+./result_reverse
