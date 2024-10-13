@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall
 
-TARGET = results_reverse
+TARGET = result_revrse
 SOURCES = assignment2a.cpp
 all: $(TARGET)
 
