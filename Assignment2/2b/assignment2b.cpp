@@ -93,14 +93,14 @@ int evaluateRPN(const std::string &expression) {
 
 int main() {
     std::string expression;
-    std::cout << "Введите выражение: ";
+    std::cout << "Enter expression: ";
     std::getline(std::cin, expression);
 
     try {
         int result = evaluateRPN(expression);
-        std::cout << "Результат: " << result << std::endl; 
+        std::cout << "Result: " << result << std::endl; 
     } catch (const std::exception &e) {
-        std::cout << "Ошибка: " << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 
     return 0;
