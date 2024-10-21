@@ -1,6 +1,16 @@
 #include "ClassTransformers.h"
 
+Transformers::Transformers() {
+    _health = 100; 
+    _armor = 50;
+    _weapon = 5;
+    _power = 10;
+}
+
 bool Transformers::attack() {
-    _weapon--;
-    return true;
+    if (_weapon > 0) {
+        _weapon--;
+        return true;
+    }
+    return false;
 }
