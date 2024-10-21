@@ -6,9 +6,15 @@ public:
     bool motion();
     bool jump();
     bool attack();
+    void Transformers::setWeapon(uint weapon) {
+        _weapon = weapon;
+    }
+    uint Transformers::getWeapon() {
+        return _weapon;
+    }
 private:
-    uint health();
-    uint armor();
-    uint weapon();
-    uint power();
+    uint _health;
+    uint _armor;
+    uint _weapon;
+    uint _power;
 };

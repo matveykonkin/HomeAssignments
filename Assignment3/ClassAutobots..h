@@ -1,7 +1,7 @@
 #include <iostream>
+#include "ClassTransformers.h"
 
-class Autobots: public Transformers {
+class Autobots : public Transformers {
 public:
     bool transform();
-private:
 };
