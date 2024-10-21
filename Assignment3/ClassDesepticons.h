@@ -1,3 +1,6 @@
+#ifndef CLASS_DESEPTICONS_H
+#define CLASS_DESEPTICONS_H
+
 #include <iostream>
 #include "ClassTransformers.h"
 
@@ -10,3 +13,5 @@ private:
     uint _weapon;
     uint _power;
 };
+
+#endif

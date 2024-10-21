@@ -1,3 +1,6 @@
+#ifndef CLASS_AUTOBOTS_H
+#define CLASS_AUTOBOTS_H
+
 #include <iostream>
 #include "ClassTransformers.h"
 
@@ -7,6 +10,8 @@ public:
 private:
     uint _health;
     uint _armor;
-    uint _weapon;
     uint _power;
+    uint _weapon;
 };
+
+#endif

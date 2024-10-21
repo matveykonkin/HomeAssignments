@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ClassTransformers.h"
 
 bool Transformers::attack() {

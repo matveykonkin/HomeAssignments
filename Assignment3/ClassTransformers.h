@@ -1,3 +1,6 @@
+#ifndef CLASS_TRANSFORMERS_H
+#define CLASS_TRANSFORMERS_H
+
 #include <iostream>
 
 class Transformers {
@@ -6,15 +9,17 @@ public:
     bool motion();
     bool jump();
     bool attack();
-    void Transformers::setWeapon(uint weapon) {
+    void setWeapon(uint weapon) {
         _weapon = weapon;
     }
-    uint Transformers::getWeapon() {
+    uint getWeapon() {
         return _weapon;
     }
-private:
+protected:
     uint _health;
     uint _armor;
     uint _weapon;
     uint _power;
 };
+
+#endif
