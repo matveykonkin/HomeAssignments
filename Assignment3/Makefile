@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -I/usr/include -pthread
-GTEST_DIR = /home/matvey/googletest/googletest/build/lib
+GTEST_DIR = ~/googletest/googletest/build/lib
 
 SRC = ClassAutobots.cpp ClassDesepticons.cpp ClassMiniRobots.cpp ClassTransformers.cpp
 OBJ = $(SRC:.cpp=.o)
