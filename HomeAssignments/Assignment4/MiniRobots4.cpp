@@ -10,8 +10,6 @@ HomeAssignment 4
 
 #include "MiniRobots4.h"
 
-MiniRobots::MiniRobots() : Transformers(70, 40, 5, 50) {}
-
 std::ostream& operator<<(std::ostream& os, const MiniRobots& miniRobot) {
     os << "MiniRobots [Health: " << miniRobot._health
        << ", Armor: " << miniRobot._armor

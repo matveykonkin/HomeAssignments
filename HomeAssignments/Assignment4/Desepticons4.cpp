@@ -10,8 +10,6 @@ HomeAssignment 4
 
 #include "Desepticons4.h"
 
-Desepticons::Desepticons() : Transformers(120, 60, 15, 80) {}
-
 std::ostream& operator<<(std::ostream& os, const Desepticons& desepticon) {
     os << "Desepticons [Health: " << desepticon._health
        << ", Armor: " << desepticon._armor

@@ -9,9 +9,7 @@ HomeAssignment 4
 */
 
 
-#include "Autobots4.h"
-
-Autobots::Autobots() : Transformers(100, 50, 10, 75) {} 
+#include "Autobots4.h" 
 
 std::ostream& operator<<(std::ostream& os, const Autobots& autobot) {
     os << "Autobots [Health: " << autobot._health
