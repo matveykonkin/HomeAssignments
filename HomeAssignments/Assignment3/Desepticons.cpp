@@ -10,8 +10,17 @@ HomeAssignment 3
 
 #include "Desepticons.h"
 
-Desepticons::Desepticons() : Transformers(120, 60, 15, 80) {}
+Desepticons::Desepticons(uint health, uint armor, uint weapon, uint power, const std::string& dangerLevel)
+    : Transformers(health, armor, weapon, power), _dangerLevel(dangerLevel) {}
 
-bool Desepticons::transform() {
-    return true;
+void Desepticons::setDangerLevel(const std::string& dangerLevel) {
+    _dangerLevel = dangerLevel;
+}
+
+std::string Desepticons::getDangerLevel() const {
+    return _dangerLevel;
+}
+
+bool Desepticons::protect() {
+    return _health > 50; 
 }

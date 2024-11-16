@@ -11,18 +11,22 @@ HomeAssignment 3
 #ifndef CLASS_AUTOBOTS_H
 #define CLASS_AUTOBOTS_H
 
-#include <iostream>
+#include <string>
 #include "Transformers.h"
 
 class Autobots : public Transformers {
 public:
-    Autobots();
+    Autobots(uint health = 100, uint armor = 50, uint weapon = 10, uint power = 75, const std::string& weaponType = "Blaster");
     bool transform();
+    void setweaponType(const std::string& weaponType);
+    std::string getweaponType() const;
+    bool protect();
 private:
     uint _health;
     uint _armor;
     uint _power;
     uint _weapon;
+    std::string _weaponType;
 };
 
 #endif

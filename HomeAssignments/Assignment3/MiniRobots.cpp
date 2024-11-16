@@ -10,10 +10,17 @@ HomeAssignment 3
 
 #include "MiniRobots.h"
 
-MiniRobots::MiniRobots() : Transformers(70, 40, 5, 50) {
-    
+MiniRobots::MiniRobots(uint health, uint armor, uint weapon, uint power, const std::string& size)
+    : Transformers(health, armor, weapon, power), _size(size) {}
+
+void MiniRobots::setSize(const std::string& size) {
+    _size = size;
 }
 
-bool MiniRobots::transform() {
-    return true;
+std::string MiniRobots::getSize() const {
+    return _size;
+}
+
+bool MiniRobots::protect() {
+    return _armor > 30;
 }

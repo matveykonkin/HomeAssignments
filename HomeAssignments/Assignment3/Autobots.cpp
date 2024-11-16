@@ -8,13 +8,19 @@ st135668@student.spbu.ru
 HomeAssignment 3
 */
 
-
 #include "Autobots.h"
 
-Autobots::Autobots() : Transformers(100, 50, 10, 75) {
-    
-} 
+Autobots::Autobots(uint health, uint armor, uint weapon, uint power, const std::string& weaponType)
+    : Transformers(health, armor, weapon, power), _weaponType(weaponType) {}
 
-bool Autobots::transform() {
-    return true;
+void Autobots::setweaponType(const std::string& weaponType) {
+    _weaponType = weaponType;
+}
+
+std::string Autobots::getweaponType() const {
+    return _weaponType;
+}
+
+bool Autobots::protect() {
+    return _power > 50; 
 }

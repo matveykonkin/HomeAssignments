@@ -5,7 +5,7 @@ GTEST_DIR = ~/googletest/googletest/build/lib
 SRC = Transformers.cpp Autobots.cpp Desepticons.cpp MiniRobots.cpp
 OBJ = $(SRC:.cpp=.o)
 
-TEST_SRC = test_transformers.cpp test_autobots.cpp test_desepticons.cpp test_minirobots.cpp
+TEST_SRC = allclassestesting.cpp
 TEST_OBJ = $(TEST_SRC:.cpp=.o)
 
 TARGET = allclasses_test
@@ -20,3 +20,8 @@ $(TARGET): $(OBJ) $(TEST_OBJ)
 
 clean:
 	rm -f $(OBJ) $(TEST_OBJ) $(TARGET)
+
+
+test: $(OBJ) $(TEST_OBJ)
+	$(CXX) $(OBJ) $(TEST_OBJ) -o $(TARGET) -L$(GTEST_DIR) -lgtest -lgtest_main -lpthread
+		./$(TARGET)

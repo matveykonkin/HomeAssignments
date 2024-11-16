@@ -8,21 +8,25 @@ st135668@student.spbu.ru
 HomeAssignment 3
 */
 
-#ifndef CLASS_DESEPTICONS_H
-#define CLASS_DESEPTICONS_H
+#ifndef CLASS_DECEPTICONS_H
+#define CLASS_DECEPTICONS_H
 
-#include <iostream>
 #include "Transformers.h"
+#include <string>
 
 class Desepticons : public Transformers {
 public:
-    Desepticons();
+    Desepticons(uint health = 90, uint armor = 55, uint weapon = 15, uint power = 80, const std::string& dangerLevel = "10");
     bool transform();
+    void setDangerLevel(const std::string& dangerLevel);
+    std::string getDangerLevel() const;
+    bool protect();
 private:
     uint _health;
     uint _armor;
-    uint _weapon;
     uint _power;
+    uint _weapon;
+    std::string _dangerLevel;
 };
 
 #endif
