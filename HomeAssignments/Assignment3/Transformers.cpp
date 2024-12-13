@@ -23,24 +23,54 @@ Transformers::Transformers(uint health, uint armor, uint weapon, uint power, Eng
 
 Transformers::~Transformers() {}
 
-bool Transformers::motion() { return true; }
-bool Transformers::jump() { return true; }
-bool Transformers::attack() { return true; }
+bool Transformers::motion() { 
+    return true; 
+    }
+bool Transformers::jump() { 
+    return true; 
+    }
+bool Transformers::attack() { 
+    return true; 
+    }
 
-void Transformers::setWeapon(uint weapon) { _weapon = weapon; }
-uint Transformers::getWeapon() const { return _weapon; }
+void Transformers::setWeapon(uint weapon) { 
+    _weapon = weapon; 
+    }
+uint Transformers::getWeapon() const {  
+    return _weapon; 
+    }
 
-void Transformers::setHealth(uint health) { _health = health; }
-uint Transformers::getHealth() const { return _health; }
+void Transformers::setHealth(uint health) { 
+    _health = health; 
+    }
+uint Transformers::getHealth() const { 
+    return _health; 
+    }
 
-void Transformers::setArmor(uint armor) { _armor = armor; }
-uint Transformers::getArmor() const { return _armor; }
+void Transformers::setArmor(uint armor) { 
+    _armor = armor; 
+    }
+uint Transformers::getArmor() const { 
+    return _armor; 
+    }
 
-void Transformers::setPower(uint power) { _power = power; }
-uint Transformers::getPower() const { return _power; }
+void Transformers::setPower(uint power) { 
+    _power = power; 
+    }
+uint Transformers::getPower() const { 
+    return _power; 
+    }
 
-void Transformers::setEngine(const Engine& engine) { _engine = engine; }
-Engine Transformers::getEngine() const { return _engine; }
+void Transformers::setEngine(const Engine& engine) { 
+    _engine = engine; 
+    }
+Engine Transformers::getEngine() const { 
+    return _engine; 
+    }
 
-void Transformers::setAlly(Transformers* ally) { _ally = ally; }
-Transformers* Transformers::getAlly() const { return _ally; }
+void Transformers::setAlly(Transformers* ally) { 
+    _ally = ally; 
+    }
+Transformers* Transformers::getAlly() const { 
+    return _ally; 
+    }

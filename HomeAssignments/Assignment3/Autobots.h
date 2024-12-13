@@ -16,17 +16,23 @@ HomeAssignment 3
 
 class Autobots : public Transformers {
 public:
-    Autobots(uint health = 100, uint armor = 50, uint weapon = 10, uint power = 75, const std::string& weaponType = "Blaster");
+    Autobots(uint health = 100, uint armor = 50, uint weapon = 10, uint power = 75, const std::string& weaponType = "Blaster", uint skillLevel = 3, uint sizeOfInventory = 10);
     bool transform();
-    void setweaponType(const std::string& weaponType);
-    std::string getweaponType() const;
+
+    void setWeaponType(const std::string& weaponType);
+    std::string getWeaponType() const;
+    
+    void setSkillLevel(uint skillLevel);
+    uint getSkillLevel() const;
+
+    void setSizeOfInventory(uint sizeOfInventory);
+    uint getSizeOfInventory() const;
+
     bool protect();
 private:
-    uint _health;
-    uint _armor;
-    uint _power;
-    uint _weapon;
     std::string _weaponType;
+    uint _skillLevel;
+    uint _sizeOfInventory;
 };
 
 #endif
