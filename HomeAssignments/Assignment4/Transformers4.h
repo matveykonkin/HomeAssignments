@@ -15,20 +15,25 @@ HomeAssignment 4
 
 class Transformers {
 public:
-    Transformers(uint health = 100, uint armor = 50, uint weapon = 10, uint power = 75)
-        : _health(health), _armor(armor), _weapon(weapon), _power(power) {}
-    
-    bool operator<(const Transformers& other) const;
-    bool operator>(const Transformers& other) const;
-    bool operator==(const Transformers& other) const;
+    Transformers();    
+    bool motion();
+    bool jump();
+    bool attack();
+
+    void setWeapon(uint _weapon) {
+        weapon = _weapon;
+    }
+    uint getWeapon() const {
+        return weapon;
+    }
 
     friend std::ostream& operator<<(std::ostream& os, const Transformers& transformer);
 
 protected:
-    uint _health;
-    uint _armor;
-    uint _weapon;
-    uint _power;
+    uint health;
+    uint armor;
+    uint weapon;
+    uint power;
 };
 
 #endif

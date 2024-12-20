@@ -9,24 +9,35 @@ HomeAssignment 4
 */
 
 #include "Transformers4.h"
+#include <iostream>
 
-std::ostream& operator<<(std::ostream& os, const Transformers& transformer) {
-    os << "Transformers [Health: " << transformer._health
-       << ", Armor: " << transformer._armor
-       << ", Weapon: " << transformer._weapon
-       << ", Power: " << transformer._power << "]";
+Transformers::Transformers() : health(100), armor(40), weapon(10), power(75) {}
+
+bool Transformers::motion()
+{
+    return true;
+}
+
+bool Transformers::jump()
+{
+    return true;
+}
+
+bool Transformers::attack()
+{
+    if (weapon > 0)
+    {
+        weapon--;
+        return true;
+    }
+    return false;
+}
+
+std::ostream& operator<<(std::ostream& os, const Transformers& transformer)
+{
+    os << "Transformer - Health: " << transformer.health
+       << ", Armor: " << transformer.armor
+       << ", Power: " << transformer.power
+       << ", Weapon: " << transformer.weapon;
     return os;
-}
-
-bool Transformers::operator==(const Transformers& other) const {
-    return _health == other._health && _armor == other._armor && 
-           _weapon == other._weapon && _power == other._power;
-}
-
-bool Transformers::operator<(const Transformers& other) const {
-    return _power < other._power; 
-}
-
-bool Transformers::operator>(const Transformers& other) const {
-    return _power > other._power;
 }

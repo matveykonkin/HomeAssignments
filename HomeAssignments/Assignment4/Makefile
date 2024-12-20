@@ -1,36 +1,32 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Werror -Wpedantic
+CXXFLAGS = -std=c++17 -Wall -Werror -Wpedantic -I/usr/include -pthread
+LDFLAGS = -lgtest -lgtest_main -lpthread
+GTEST_LIB_DIR = ~/googletest/googletest/build/lib
 
-SRC = main.cpp Transformers4.cpp Autobots4.cpp Desepticons4.cpp MiniRobots4.cpp
-OBJ = $(SRC:.cpp=.o)
-TARGET = transformers_app
+SRC_DIR = .
+BUILD_DIR = build
+TARGET = test
 
-TEST_SRC = tests.cpp
-TEST_OBJ = $(TEST_SRC:.cpp=.o)
-TEST_TARGET = test_transformers
+SRCS = $(SRC_DIR)/Autobots4.cpp $(SRC_DIR)/Desepticons4.cpp $(SRC_DIR)/MiniRobots4.cpp $(SRC_DIR)/Transformers4.cpp
+OBJS = $(addprefix $(BUILD_DIR)/, $(notdir $(SRCS:.cpp=.o)))
+TEST_SRC = $(SRC_DIR)/tests.cpp
+TEST_OBJ = $(BUILD_DIR)/$(notdir $(TEST_SRC:.cpp=.o))
 
-GTEST_LIBS = -lgtest -lgtest_main
+all: $(TARGET)
 
-all: $(TARGET) $(TEST_TARGET)
+$(TARGET): $(OBJS) $(TEST_OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJS) $(TEST_OBJ) -o $@ -L$(GTEST_LIB_DIR) $(LDFLAGS)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) $^ -o $@
-
-$(TEST_TARGET): $(OBJ) $(TEST_OBJ)
-	$(CXX) $(CXXFLAGS) $^ $(GTEST_LIBS) -o $@
-
-%.o: %.cpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-test: $(TEST_TARGET)
-	./$(TEST_TARGET)
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
 clean:
-	rm -f $(OBJ) $(TEST_OBJ) $(TARGET) $(TEST_TARGET)
+	rm -f $(OBJS) $(TEST_OBJ) $(TARGET)
 
--include $(SRC:.cpp=.d) $(TEST_SRC:.cpp=.d)
+cleanall: clean
+	rm -rf $(BUILD_DIR)
 
-%.d: %.cpp
-	$(CXX) -MM $(CXXFLAGS) $< > $@.tmp
-	sed 's|\($*\)\.o[ :]*|\1.o $@ : |g' < $@.tmp > $@
-	rm -f $@.tmp
+.PHONY: all clean cleanall

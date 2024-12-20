@@ -10,23 +10,30 @@ HomeAssignment 4
 
 #include "MiniRobots4.h"
 
-std::ostream& operator<<(std::ostream& os, const MiniRobots& miniRobot) {
-    os << "MiniRobots [Health: " << miniRobot._health
-       << ", Armor: " << miniRobot._armor
-       << ", Weapon: " << miniRobot._weapon
-       << ", Power: " << miniRobot._power << "]";
+MiniRobots::MiniRobots() : health(130), armor(70), weapon(90), power(8) {}
+MiniRobots::MiniRobots(uint _health, uint _armor, uint _weapon, uint _power)
+    : health(_health), armor(_armor), weapon(_weapon), power(_power) {}
+
+bool MiniRobots::sizeOfRobot()
+{
+    std::cout << "MiniRobot's size is small" << std::endl;
+    return true;
+}
+
+bool MiniRobots::operator>(const MiniRobots& other) const
+{
+    return power > other.power;
+}
+bool MiniRobots::operator<(const MiniRobots& other) const
+{
+    return power < other.power;
+}
+
+std::ostream& operator<<(std::ostream& os, const MiniRobots& dinobot)
+{
+    os << "Dinobot - Health: " << dinobot.health
+       << ", Armor: " << dinobot.armor
+       << ", Power: " << dinobot.power
+       << ", Weapon: " << dinobot.weapon;
     return os;
-}
-
-bool MiniRobots::operator==(const MiniRobots& other) const {
-    return _health == other._health && _armor == other._armor && 
-           _weapon == other._weapon && _power == other._power;
-}
-
-bool MiniRobots::operator<(const MiniRobots& other) const {
-    return _power < other._power; 
-}
-
-bool MiniRobots::operator>(const MiniRobots& other) const {
-    return _power > other._power;
 }

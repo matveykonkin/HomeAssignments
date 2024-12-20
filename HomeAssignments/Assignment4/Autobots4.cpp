@@ -11,23 +11,30 @@ HomeAssignment 4
 
 #include "Autobots4.h" 
 
-std::ostream& operator<<(std::ostream& os, const Autobots& autobot) {
-    os << "Autobots [Health: " << autobot._health
-       << ", Armor: " << autobot._armor
-       << ", Weapon: " << autobot._weapon
-       << ", Power: " << autobot._power << "]";
+Autobots::Autobots() : health(100), armor(50), power(75), weapon(10) {}
+Autobots::Autobots(uint _health, uint _armor, uint _power, uint _weapon)
+    : health(_health), armor(_armor), power(_power), weapon(_weapon) {}
+
+bool Autobots::weaponType()
+{
+    std::cout << "Autobot's type of weapon is Blaster" << std::endl;
+    return true;
+}
+
+bool Autobots::operator>(const Autobots& other) const
+{
+    return power > other.power;
+}
+bool Autobots::operator<(const Autobots& other) const
+{
+    return power < other.power;
+}
+
+std::ostream& operator<<(std::ostream& os, const Autobots& autobot)
+{
+    os << "Autobot - Health: " << autobot.health
+       << ", Armor: " << autobot.armor
+       << ", Power: " << autobot.power
+       << ", Weapon: " << autobot.weapon;
     return os;
-}
-
-bool Autobots::operator==(const Autobots& other) const {
-    return _health == other._health && _armor == other._armor && 
-           _weapon == other._weapon && _power == other._power;
-}
-
-bool Autobots::operator<(const Autobots& other) const {
-    return _power < other._power; 
-}
-
-bool Autobots::operator>(const Autobots& other) const {
-    return _power > other._power;
 }

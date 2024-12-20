@@ -16,15 +16,22 @@ HomeAssignment 4
 
 class Autobots : public Transformers {
 public:
-    Autobots() : Transformers() {}
-    Autobots(uint health, uint armor, uint weapon, uint power)
-        : Transformers(health, armor, weapon, power) {}
+    Autobots();
+    Autobots(uint health, uint armor, uint weapon, uint power);
+    bool weaponType();
+    uint getPower() const {
+        return power;
+    }
 
     bool operator<(const Autobots& other) const;
     bool operator>(const Autobots& other) const;
-    bool operator==(const Autobots& other) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Autobots& autobot);
+private:
+    uint health;
+    uint armor;
+    uint power;
+    uint weapon;
 };
 
 #endif

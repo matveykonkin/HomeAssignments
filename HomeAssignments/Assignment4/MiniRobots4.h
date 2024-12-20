@@ -16,15 +16,23 @@ HomeAssignment 4
 
 class MiniRobots : public Transformers {
 public:
-    MiniRobots() : Transformers() {}
-    MiniRobots(uint health, uint armor, uint weapon, uint power)
-        : Transformers(health, armor, weapon, power) {}
+    MiniRobots();
+    MiniRobots(uint health, uint armor, uint weapon, uint power);
+    bool sizeOfRobot();
+    uint getPower() const {
+        return power;
+    }
 
     bool operator<(const MiniRobots& other) const;
     bool operator>(const MiniRobots& other) const;
-    bool operator==(const MiniRobots& other) const;
 
     friend std::ostream& operator<<(std::ostream& os, const MiniRobots& miniRobot);
+
+private:
+    uint health;
+    uint armor;
+    uint weapon;
+    uint power;
 };
 
 #endif

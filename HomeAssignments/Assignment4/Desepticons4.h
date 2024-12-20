@@ -16,15 +16,23 @@ HomeAssignment 4
 
 class Desepticons : public Transformers {
 public:
-    Desepticons() : Transformers() {}
-    Desepticons(uint health, uint armor, uint weapon, uint power)
-        : Transformers(health, armor, weapon, power) {}
-    
+    Desepticons();
+    Desepticons(uint health, uint armor, uint weapon, uint power);
+    bool DangerLevel();
+    uint getPower() const {
+        return power;
+    }
+
     bool operator<(const Desepticons& other) const;
     bool operator>(const Desepticons& other) const;
-    bool operator==(const Desepticons& other) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Desepticons& desepticon);
+
+private:
+    uint health;
+    uint armor;
+    uint weapon;
+    uint power;
 };
 
 #endif

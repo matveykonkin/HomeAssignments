@@ -10,23 +10,30 @@ HomeAssignment 4
 
 #include "Desepticons4.h"
 
-std::ostream& operator<<(std::ostream& os, const Desepticons& desepticon) {
-    os << "Desepticons [Health: " << desepticon._health
-       << ", Armor: " << desepticon._armor
-       << ", Weapon: " << desepticon._weapon
-       << ", Power: " << desepticon._power << "]";
+Desepticons::Desepticons() : health(130), armor(70), weapon(90), power(8) {}
+Desepticons::Desepticons(uint _health, uint _armor, uint _weapon, uint _power)
+    : health(_health), armor(_armor), weapon(_weapon), power(_power) {}
+
+bool Desepticons::DangerLevel()
+{
+    std::cout << "Desepticon's level of danger is very danger" << std::endl;
+    return true;
+}
+
+bool Desepticons::operator>(const Desepticons& other) const
+{
+    return power > other.power;
+}
+bool Desepticons::operator<(const Desepticons& other) const
+{
+    return power < other.power;
+}
+
+std::ostream& operator<<(std::ostream& os, const Desepticons& Desepticons)
+{
+    os << "Desepticon - Health: " << Desepticons.health
+       << ", Armor: " << Desepticons.armor
+       << ", Power: " << Desepticons.power
+       << ", Weapon: " << Desepticons.weapon;
     return os;
-}
-
-bool Desepticons::operator==(const Desepticons& other) const {
-    return _health == other._health && _armor == other._armor && 
-           _weapon == other._weapon && _power == other._power;
-}
-
-bool Desepticons::operator<(const Desepticons& other) const {
-    return _power < other._power; 
-}
-
-bool Desepticons::operator>(const Desepticons& other) const {
-    return _power > other._power;
 }

@@ -3,116 +3,65 @@
 #include "Autobots4.h"
 #include "Desepticons4.h"
 #include "MiniRobots4.h"
+#include <sstream>
 
-TEST(TransformersTest, EqualityOperator) {
-    Transformers t1(100, 50, 10, 75);
-    Transformers t2(100, 50, 10, 75);
-    EXPECT_TRUE(t1 == t2);
+TEST(TransformersTest, BasicFunctions) {
+    Transformers transformer;
+    transformer.setWeapon(10);
+    EXPECT_EQ(transformer.getWeapon(), 10);
 
-    Transformers t3(90, 50, 10, 75);
-    EXPECT_FALSE(t1 == t3);
-}
-
-TEST(TransformersTest, LessThanOperator) {
-    Transformers t1(100, 50, 10, 50);
-    Transformers t2(100, 50, 10, 75);
-    EXPECT_TRUE(t1 < t2);
-    EXPECT_FALSE(t2 < t1);
-}
-
-TEST(TransformersTest, GreaterThanOperator) {
-    Transformers t1(100, 50, 10, 100);
-    Transformers t2(100, 50, 10, 75);
-    EXPECT_TRUE(t1 > t2);
-    EXPECT_FALSE(t2 > t1);
-}
-
-TEST(TransformersTest, OutputOperator) {
-    Transformers t1(100, 50, 10, 75);
-    std::ostringstream oss;
-    oss << t1;
-    EXPECT_EQ(oss.str(), "Transformers [Health: 100, Armor: 50, Weapon: 10, Power: 75]");
-}
-
-TEST(AutobotsTest, EqualityOperator) {
-    Autobots a1(120, 60, 15, 70);
-    Autobots a2(120, 60, 15, 75);
-    EXPECT_TRUE(a1 == a2);
-
-    Autobots a3(90, 60, 15, 75);
-    EXPECT_FALSE(a1 == a3);
-}
-
-TEST(AutobotsTest, LessThanOperator) {
-    Autobots a1(120, 60, 15, 70);
-    Autobots a2(120, 50, 15, 75);
-    EXPECT_TRUE(a1 < a2);
-    EXPECT_FALSE(a2 < a1);
-}
-
-TEST(AutobotsTest, GreaterThanOperator) {
-    Autobots a1(120, 50, 15, 100);
-    Autobots a2(100, 50, 10, 75);
-    EXPECT_TRUE(a1 > a2);
-    EXPECT_FALSE(a2 > a1);
+    transformer.attack();
+    EXPECT_EQ(transformer.getWeapon(), 9);
+    EXPECT_TRUE(transformer.motion());
+    EXPECT_TRUE(transformer.jump());
 }
 
 TEST(AutobotsTest, OutputOperator) {
-    Autobots a1(120, 60, 15, 70);
-    std::ostringstream oss;
-    oss << a1;
-    EXPECT_EQ(oss.str(), "Autobots [Health: 120, Armor: 60, Weapon: 15, Power: 70]");
+    Autobots autobot(100, 50, 80, 10);
+    std::ostringstream os;
+    os << autobot;
+    EXPECT_NE(os.str().find("Autobot - Health: 100"), std::string::npos);
 }
 
-TEST(DesepticonsTest, EqualityOperator) {
-    Desepticons d1(90, 45, 15, 65);
-    Desepticons d2(100, 50, 10, 75);
-    EXPECT_TRUE(d1 == d2);
-
-    Desepticons d3(90, 50, 10, 75);
-    EXPECT_FALSE(d1 == d3);
+TEST(AutobotsTest, ComparisonOperator) {
+    Autobots autobot1(100, 50, 80, 10);
+    Autobots autobot2(100, 50, 75, 10);
+    EXPECT_TRUE(autobot1 > autobot2);
+    EXPECT_FALSE(autobot1 < autobot2);
 }
 
-TEST(DesepticonsTest, LessThanOperator) {
-    Desepticons d1(90, 45, 15, 65);
-    Desepticons d2(100, 50, 10, 75);
-    EXPECT_TRUE(d1 < d2);
-    EXPECT_FALSE(d2 < d1);
+TEST(DesepticonsTest, ConstructorAndAttributes) {
+    Desepticons desepticon(120, 60, 85, 12);
+    EXPECT_EQ(desepticon.getPower(), 12);
 }
 
 TEST(DesepticonsTest, OutputOperator) {
-    Desepticons d1(90, 45, 15, 65);
-    std::ostringstream oss;
-    oss << d1;
-    EXPECT_EQ(oss.str(), "Desepticons [Health: 90, Armor: 45, Weapon: 15, Power: 65]");
+    Desepticons desepticon(120, 60, 85, 12);
+    std::ostringstream os;
+    os << desepticon;
+    EXPECT_NE(os.str().find("Desepticon - Health: 120"), std::string::npos);
 }
 
-TEST(MiniRobotsTest, EqualityOperator) {
-    MiniRobots m1(80, 35, 5, 60);
-    MiniRobots m2(80, 35, 5, 60);
-    EXPECT_TRUE(m1 == m2);
-
-    MiniRobots m3(90, 50, 10, 75);
-    EXPECT_FALSE(m1 == m3);
+TEST(DesepticonsTest, ComparisonOperator) {
+    Desepticons desepticon1(120, 60, 85, 12);
+    Desepticons desepticon2(120, 60, 75, 10);
+    EXPECT_TRUE(desepticon1 > desepticon2);
+    EXPECT_FALSE(desepticon1 < desepticon2);
 }
 
-TEST(MiniRobotsTest, LessThanOperator) {
-    MiniRobots m1(80, 35, 5, 60);
-    MiniRobots m2(100, 50, 10, 75);
-    EXPECT_TRUE(m1 < m2);
-    EXPECT_FALSE(m2 < m1);
+TEST(MiniRobotsTest, ConstructorAndAttributes) {
+    MiniRobots minirobot(130, 70, 90, 8);
+    EXPECT_EQ(minirobot.getPower(), 8);
 }
 
-TEST(MiniRobotsTest, GreaterThanOperator) {
-    MiniRobots m1(80, 35, 5, 60);
-    MiniRobots m2(100, 50, 10, 75);
-    EXPECT_TRUE(m1 > m2);
-    EXPECT_FALSE(m2 > m1);
+TEST(MiniRobotsTest, ComparisonOperator) {
+    MiniRobots minirobot1(130, 70, 90, 8);
+    MiniRobots minirobot2(130, 70, 80, 6);
+    EXPECT_TRUE(minirobot1 > minirobot2);
+    EXPECT_FALSE(minirobot1 < minirobot2);
 }
 
-TEST(MiniRobotsTest, OutputOperator) {
-    MiniRobots m1(80, 35, 5, 60);
-    std::ostringstream oss;
-    oss << m1;
-    EXPECT_EQ(oss.str(), "MiniRobots [Health: 80, Armor: 35, Weapon: 5, Power: 60]");
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

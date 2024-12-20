@@ -8,4 +8,4 @@ realization comparison and output operators and tets them
 ## Build
 make
 ## Run
-make test
+./test
